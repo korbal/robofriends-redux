@@ -4,12 +4,17 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
 import { Provider, connect } from 'react-redux';
-import { createStore } from 'redux';
-import { searchRobots } from './reducers.js';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { searchRobots, requestRobots } from './reducers.js';
 import App from './containers/App.js'
+import { createLogger } from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
+import thunk from 'redux-thunk';
 
-const store = createStore(searchRobots);
+const logger = createLogger();
+const rootReducer = combineReducers({searchRobots, requestRobots})
 
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger));
 // import CardList from './CardList.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
