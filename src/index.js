@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons';
-import { Provider, connect } from 'react-redux';
+import { Provider} from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { searchRobots, requestRobots } from './reducers.js';
 import App from './containers/App.js'
 import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
-import thunk from 'redux-thunk';
+//import thunk from 'redux-thunk';
 
 const logger = createLogger();
 const rootReducer = combineReducers({searchRobots, requestRobots})
